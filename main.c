@@ -1,6 +1,9 @@
-#include <stdio.h>
+ #include <stdio.h>
 
 int main() {
-
-  return 0;
+    
+    int cipher;
+    
+    scanf("%d", &cipher); //1 for rotation cypher, 2 for subsitution cypher
+    printf("%d\n", cipher);
 }
