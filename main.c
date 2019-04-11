@@ -1,9 +1,16 @@
  #include <stdio.h>
 
+int cypher;
+
 int main() {
-    
-    int cipher;
-    
-    scanf("%d", &cipher); //1 for rotation cypher, 2 for subsitution cypher
-    printf("%d\n", cipher);
+    printf("Input 1 for Rotaion or 2 for Substitution\n");
+    scanf("%d", &cypher);
+    switch(cypher) { //switch between cypher used
+        case 1: printf("Rotation chosen\n");
+            break;
+        case 2: printf("Substitution chosen\n");
+            break;
+        default: printf("error");
+    }
+    return 0;
 }
