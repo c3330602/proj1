@@ -1,6 +1,6 @@
  #include <stdio.h>
  #include <string.h>
-
+ //encryption mode can also be used to decrypt if needed due to error or something
 void rotatione(void); //functions
 void rotationd(void);
 void sube(void);
@@ -15,7 +15,7 @@ int main() {
                 printf("Input 1 for Encryption or 2 for Decryption\n");
                 scanf("%d\n", &cryption);
                 switch(cryption) { // switch between decryption and encryption
-                    case 1: printf("Encryption chosen\n");
+                    case 1: printf("Encryption chosen\n"); 
                             rotatione();
                         break;
                     case 2: printf("Decryption chosen\n");
@@ -53,18 +53,31 @@ void rotatione(void) {
     printf("message chosen to encrypt:\n%s\n", message);
     
     while(N < length) {
-        if(message[N] >= 65 && message[N] <= 90) { //only includes capital letters
+        if(message[N] >= 97 && message[N] <= 122) { //converts lowercase to uppercase
+        message[N] = message[N] - 32;
+            if(message[N] >= 65 && message[N] <= 90) { //only includes capital letters
             
-            message[N] = message[N] + key; // adds or subtracts based off key
-            if(message[N] > 90) { //for when key goes past Z
-                difference = message[N] - 90;
-                message[N] = 64 + difference;
-            }if(message[N] < 65){ //for when key goes past A
-                difference = 65 - message[N];
-                message[N] = 91 - difference;
+                message[N] = message[N] + key; // adds or subtracts based off key
+                if(message[N] > 90) { //for when key goes past Z
+                    difference = message[N] - 90;
+                    message[N] = 64 + difference;
+                }if(message[N] < 65){ //for when key goes past A
+                    difference = 65 - message[N];
+                    message[N] = 91 - difference;
+                }
+            }
+        }if(message[N] >= 65 && message[N] <= 90) { //only includes capital letters
+            
+                message[N] = message[N] + key; // adds or subtracts based off key
+                if(message[N] > 90) { //for when key goes past Z
+                    difference = message[N] - 90;
+                    message[N] = 64 + difference;
+                }if(message[N] < 65){ //for when key goes past A
+                    difference = 65 - message[N];
+                    message[N] = 91 - difference;
             }
         }
-        
+
         N = N + 1; // goes to next element of array
     }
     printf("encrypted message:\n%s\n", message);
@@ -112,59 +125,116 @@ void sube(void) {
     printf("message is:\n%s\n", message);
     
     for(N = 0; N < 1000; N++) {
-            switch(message[N]) { //determines what the letter for N is and replaces it with substitution
-                case 'A': message[N] = a;
-            break;
-                case 'B': message[N] = b;
-            break;
-                case 'C': message[N] = c;
-            break;
-                case 'D': message[N] = d;
-            break;
-                case 'E': message[N] = e;
-            break;
-                case 'F': message[N] = f;
-            break;
-                case 'G': message[N] = g;
-            break;
-                case 'H': message[N] = h;
-            break;
-                case 'I': message[N] = i;
-            break;
-                case 'J': message[N] = j;
-            break;
-                case 'K': message[N] = k;
-            break;
-                case 'L': message[N] = l;
-            break;
-                case 'M': message[N] = m;
-            break;
-                case 'N': message[N] = n;
-            break;
-                case 'O': message[N] = o;
-            break;
-                case 'P': message[N] = p;
-            break;
-                case 'Q': message[N] = q;
-            break;
-                case 'R': message[N] = r;
-            break;
-                case 'S': message[N] = s;
-            break;
-                case 'T': message[N] = t;
-            break;
-                case 'U': message[N] = u;
-            break;
-                case 'V': message[N] = v;
-            break;
-                case 'W': message[N] = w;
-            break;
-                case 'X': message[N] = x;
-            break;
-                case 'Y': message[N] = y;
-            break;
-                case 'Z': message[N] = z;
-            break;
+        if(message[N] >= 97 && message[N] <= 122) { //changes from lowercase to uppercase
+            message[N] = message[N] - 32;
+                switch(message[N]) { //determines what the letter for N is and replaces it with substitution
+                    case 'A': message[N] = a;
+                break;
+                    case 'B': message[N] = b;
+                break;
+                    case 'C': message[N] = c;
+                break;
+                    case 'D': message[N] = d;
+                break;
+                    case 'E': message[N] = e;
+                break;
+                    case 'F': message[N] = f;
+                break;
+                    case 'G': message[N] = g;
+                break;
+                    case 'H': message[N] = h;
+                break;
+                    case 'I': message[N] = i;
+                break;
+                    case 'J': message[N] = j;
+                break;
+                    case 'K': message[N] = k;
+                break;
+                    case 'L': message[N] = l;
+                break;
+                    case 'M': message[N] = m;
+                break;
+                    case 'N': message[N] = n;
+                break;
+                    case 'O': message[N] = o;
+                break;
+                    case 'P': message[N] = p;
+                break;
+                    case 'Q': message[N] = q;
+                break;
+                    case 'R': message[N] = r;
+                break;
+                    case 'S': message[N] = s;
+                break;
+                    case 'T': message[N] = t;
+                break;
+                    case 'U': message[N] = u;
+                break;
+                    case 'V': message[N] = v;
+                break;
+                    case 'W': message[N] = w;
+                break;
+                    case 'X': message[N] = x;
+                break;
+                    case 'Y': message[N] = y;
+                break;
+                    case 'Z': message[N] = z;
+                break;
+            }	
+        }
+                switch(message[N]) { //determines what the letter for N is and replaces it with substitution
+                    case 'A': message[N] = a;
+                break;
+                    case 'B': message[N] = b;
+                break;
+                    case 'C': message[N] = c;
+                break;
+                    case 'D': message[N] = d;
+                break;
+                    case 'E': message[N] = e;
+                break;
+                    case 'F': message[N] = f;
+                break;
+                    case 'G': message[N] = g;
+                break;
+                    case 'H': message[N] = h;
+                break;
+                    case 'I': message[N] = i;
+                break;
+                 case 'J': message[N] = j;
+                break;
+                    case 'K': message[N] = k;
+                break;
+                    case 'L': message[N] = l;
+               break;
+                    case 'M': message[N] = m;
+               break;
+                    case 'N': message[N] = n;
+                break;
+                    case 'O': message[N] = o;
+                break;
+                    case 'P': message[N] = p;
+                break;
+                    case 'Q': message[N] = q;
+                break;
+                    case 'R': message[N] = r;
+                break;
+                    case 'S': message[N] = s;
+                break;
+                    case 'T': message[N] = t;
+                break;
+                    case 'U': message[N] = u;
+                break;
+                    case 'V': message[N] = v;
+                break;
+                    case 'W': message[N] = w;
+                break;
+                    case 'X': message[N] = x;
+                break;
+                    case 'Y': message[N] = y;
+                break;
+                    case 'Z': message[N] = z;
+                break;
         }
     }
     printf("encrypted message is:\n%s", message);//prints result
